@@ -1,0 +1,26 @@
+- 
+  name: EC2 image builder
+  hosts: 127.0.0.1
+  gather_facts: false
+  connection: local
+  vars:
+    username: imtiazramzan01
+    password: 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
+    repo_name: ec2imagebuilder_ansible1
+  tasks:
+        - name: Install web git
+          yum:
+                name: git
+                state: present
+        - git:
+            repo: 'https://{{ username | urlencode }}:{{ password | urlencode }}@github.com/{{ username }}/{{ repo_name }}.git'
+            dest: /home/imtiaz/gitclone
+            clone: yes
+
+        - name: Install playbook
+          shell: ansible-playbook /home/imtiaz/gitclone/Components/Linux/ansible-playbook-execution-amazon-linux-2/playbook.yml
+
+        - name: Delete content & directory
+          file:
+            state: absent
+            path: /home/imtiaz/gitclone/
