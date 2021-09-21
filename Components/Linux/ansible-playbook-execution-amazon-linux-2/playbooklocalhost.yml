@@ -18,7 +18,7 @@
             clone: yes
 
         - name: Install playbook
-          shell: ansible-playbook /home/imtiaz/gitclone/Components/Linux/ansible-playbook-execution-amazon-linux-2/playbook.yml
+          shell: ansible-playbook /tmp/gitclone/Components/Linux/ansible-playbook-execution-amazon-linux-2/playbook.yml
 
         - name: Delete content & directory
           file:
