@@ -14,7 +14,7 @@
                 state: present
         - git:
             repo: 'https://{{ username | urlencode }}:{{ password | urlencode }}@github.com/{{ username }}/{{ repo_name }}.git'
-            dest: /home/imtiaz/gitclone
+            dest: /tmp/gitclone
             clone: yes
 
         - name: Install playbook
@@ -23,4 +23,4 @@
         - name: Delete content & directory
           file:
             state: absent
-            path: /home/imtiaz/gitclone/
+            path: /tmp/gitclone/
